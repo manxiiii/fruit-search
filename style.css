@@ -7,7 +7,8 @@
 }
 
 body {
-  /* TODO */
+  background: linear-gradient(to right, azure, purple);
+
 }
 
 input {
@@ -15,7 +16,7 @@ input {
 }
 
 .search-container {
- /* TODO */
+
 }
 .search-container input,
 .search-container .suggestions {
@@ -43,4 +44,8 @@ ul li:hover {
 
 input {
    /* TODO */
+}
+
+.highlight {
+  background-color: azure;
 }

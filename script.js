@@ -5,23 +5,40 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 
 function search(str) {
 	let results = [];
-
-	// TODO
-
+	const re = new RegExp(str,'i');
+	results = fruit.filter(val=>val.match(re));
 	return results;
 }
 
+function highlight(e) {
+
+	e.target.classList.toggle('highlight');
+}
+
+function unhighlight(e) {
+	e.target.classList.toggle('highlight');
+}
+
 function searchHandler(e) {
-	// TODO
+	const resultsList=search(input.value);
+	while (suggestions.firstChild) {
+		suggestions.removeChild(suggestions.firstChild);
+	}
+	showSuggestions(resultsList,input.value);
 }
 
 function showSuggestions(results, inputVal) {
-
-	// TODO
+	results.forEach(val=>{
+		const li = document.createElement('li');
+		li.innerText=val;
+		li.addEventListener('mouseenter',highlight);
+		li.addEventListener('mouseleave',unhighlight);
+		suggestions.append(li);
+	})
 }
 
 function useSuggestion(e) {
-	// TODO
+	input.value = e.target.innerText;
 }
 
 input.addEventListener('keyup', searchHandler);
